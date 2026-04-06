@@ -706,7 +706,12 @@ with tab5:
     })
 
     total_pred = int(pred_2569['Predicted_vis'].sum())
-    total_2568 = int(df_annual[df_annual['Year'] == 2568]['Total_vis'].values[0])
+    df_2568 = df_annual[df_annual['Year'] == 2568]
+
+if not df_2568.empty:
+    total_2568 = int(df_2568['Total_vis'].values[0])
+else:
+    total_2568 = 0  # หรือ fallback
     growth_pred = (total_pred - total_2568) / total_2568 * 100
 
     st.markdown(f"""
